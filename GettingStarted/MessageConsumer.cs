@@ -4,7 +4,12 @@ using Microsoft.Extensions.Logging;
 
 namespace GettingStarted
 {
-    public class Message
+    public interface IMessage
+    {
+
+    }
+
+    public class Message : IMessage
     {
         public string Text { get; set; }
     }
@@ -21,7 +26,25 @@ namespace GettingStarted
 
         public Task Consume(ConsumeContext<Message> context)
         {
-            _logger.LogInformation("Received Text: {Text}", context.Message.Text);
+            _logger.LogInformation("Consuming Message: {Text}", context.Message.Text);
+
+            return Task.CompletedTask;
+        }
+    }
+
+    public class AllMessageConsumer :
+    IConsumer<IMessage>
+    {
+        readonly ILogger<AllMessageConsumer> _logger;
+
+        public AllMessageConsumer(ILogger<AllMessageConsumer> logger)
+        {
+            _logger = logger;
+        }
+
+        public Task Consume(ConsumeContext<IMessage> context)
+        {
+            _logger.LogInformation("Consuming IMessage");
 
             return Task.CompletedTask;
         }
