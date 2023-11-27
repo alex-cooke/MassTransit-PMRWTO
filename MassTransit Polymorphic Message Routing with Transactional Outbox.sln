@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransit-PMRWTO", "MassTransit-PMRWTO\MassTransit-PMRWTO.csproj", "{A41B0E14-81E3-4897-8A80-8F88D55446ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A41B0E14-81E3-4897-8A80-8F88D55446ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41B0E14-81E3-4897-8A80-8F88D55446ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41B0E14-81E3-4897-8A80-8F88D55446ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41B0E14-81E3-4897-8A80-8F88D55446ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4489A43-82AA-4527-B60E-DE0481E36D73}
+	EndGlobalSection
+EndGlobal
