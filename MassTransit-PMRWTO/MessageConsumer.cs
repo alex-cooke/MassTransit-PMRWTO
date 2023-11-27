@@ -2,20 +2,19 @@ using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 
-namespace GettingStarted
+namespace PMRWTO
 {
-    public class MessageBase
+    public class ParentMessage
     {
 
     }
 
-    public class Message : MessageBase
+    public class ChildMessage : ParentMessage
     {
         public string Text { get; set; }
     }
 
-    public class MessageConsumer :
-        IConsumer<Message>
+    public class MessageConsumer : IConsumer<ChildMessage>
     {
         readonly ILogger<MessageConsumer> _logger;
 
@@ -24,27 +23,26 @@ namespace GettingStarted
             _logger = logger;
         }
 
-        public Task Consume(ConsumeContext<Message> context)
+        public Task Consume(ConsumeContext<ChildMessage> context)
         {
-            _logger.LogInformation("Consuming Message: {Text}", context.Message.Text);
+            _logger.LogInformation($"Consuming Message : {context.Message.GetType()}");
 
             return Task.CompletedTask;
         }
     }
 
-    public class MessageBaseConsumer :
-    IConsumer<MessageBase>
+    public class ParentMessageConsumer : IConsumer<ParentMessage>
     {
-        readonly ILogger<MessageBaseConsumer> _logger;
+        readonly ILogger<ParentMessageConsumer> _logger;
 
-        public MessageBaseConsumer(ILogger<MessageBaseConsumer> logger)
+        public ParentMessageConsumer(ILogger<ParentMessageConsumer> logger)
         {
             _logger = logger;
         }
 
-        public Task Consume(ConsumeContext<MessageBase> context)
+        public Task Consume(ConsumeContext<ParentMessage> context)
         {
-            _logger.LogInformation("Consuming Base Message");
+            _logger.LogInformation($"Consuming Message : {context.Message.GetType()}");
 
             return Task.CompletedTask;
         }

@@ -5,7 +5,7 @@ using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace GettingStarted
+namespace PMRWTO
 {
     public class Worker : BackgroundService
     {
@@ -31,7 +31,7 @@ namespace GettingStarted
                     var context = scope.ServiceProvider.GetRequiredService<OutboxContext>();
 
                     //  Publish a message
-                    await publisher.Publish(new Message { Text = $"The time is {DateTimeOffset.Now}" }, stoppingToken);
+                    await publisher.Publish(new ChildMessage { Text = $"The time is {DateTimeOffset.Now}" }, stoppingToken);
 
                     //  Save the context changes, ie. commit the message to be published
                     await context.SaveChangesAsync();

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using MassTransit.Configuration;
 using System;
 
-namespace GettingStarted
+namespace PMRWTO
 {
     public class Program
     {
@@ -31,8 +31,8 @@ namespace GettingStarted
 
                     services.AddMassTransit(x =>
                     {
-                        //x.AddConsumer<MessageConsumer>();
-                        x.AddConsumer<MessageBaseConsumer>();
+                        x.AddConsumer<MessageConsumer>();
+                        x.AddConsumer<ParentMessageConsumer>();
 
                         //  Enable the transactional outbox
                         x.AddEntityFrameworkOutbox<OutboxContext>(o =>
